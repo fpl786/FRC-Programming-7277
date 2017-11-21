@@ -17,7 +17,8 @@ bool ArcadeDriveWithJoystick::IsFinished() {
 
 // Called once after isFinished returns true
 void ArcadeDriveWithJoystick::End() {
-
+	//Stops drivetrain
+	Robot::drivetrain->Drive(0, 0);
 }
 
 
