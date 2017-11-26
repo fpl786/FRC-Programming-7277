@@ -13,8 +13,8 @@
 
 class Robot: public frc::IterativeRobot {
 public:
-	static std::shared_ptr<DriveTrain> drivetrain;
-	static std::unique_ptr<OI> oi;
+	static DriveTrain* drivetrain;
+	static OI* oi;
 
 private:
 	frc::LiveWindow* lw = frc::LiveWindow::GetInstance();
