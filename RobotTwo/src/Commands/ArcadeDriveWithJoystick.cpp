@@ -3,7 +3,7 @@
 
 ArcadeDriveWithJoystick::ArcadeDriveWithJoystick() :
 			frc::Command("ArcadeDriveWithJoystick") {
-				Requires(Robot::drivetrain.get());
+				Requires(Robot::drivetrain);
 }
 
 void ArcadeDriveWithJoystick::Execute() {
