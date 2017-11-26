@@ -2,12 +2,15 @@
 
 #include <iostream>
 
-//Setting up the share Subsystems and oi so that the commands can use it
-std::shared_ptr<DriveTrain> Robot::drivetrain = std::make_shared<DriveTrain>();
-std::unique_ptr<OI> Robot::oi = std::make_unique<OI>();
+//Setting up the pointer to contain NULL in case the robot init doesn not run, I guess
+ DriveTrain* Robot::drivetrain = NULL;
+ OI* Robot::oi = NULL;
 
 void Robot::RobotInit() {
-	frc::SmartDashboard::PutData(drivetrain.get());
+	//Creating an object for the pointer to point to.
+	drivetrain = new DriveTrain();
+	oi =  new OI();
+	frc::SmartDashboard::PutData(drivetrain);
 }
 
 void Robot::AutonomousInit() {
