@@ -3,7 +3,7 @@
 
 ArcadeDriveWithJoystick::ArcadeDriveWithJoystick() :
 			frc::Command("ArcadeDriveWithJoystick") {
-				Requires(Robot::drivetrain.get());
+				Requires(Robot::drivetrain);
 }
 
 void ArcadeDriveWithJoystick::Execute() {
@@ -19,5 +19,10 @@ bool ArcadeDriveWithJoystick::IsFinished() {
 void ArcadeDriveWithJoystick::End() {
 	Robot::drivetrain->Drive(0, 0);
 }
+
+void ArcadeDriveWithJoystick::Interrupted(){
+	End();
+}
+
 
 

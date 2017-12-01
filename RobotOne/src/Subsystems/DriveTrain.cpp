@@ -5,17 +5,22 @@
 #include "Commands/ArcadeDriveWithJoystick.h"
 
 DriveTrain::DriveTrain()
-	: Subsystem("DriveTrain") {
+	: Subsystem("drivetrain") {
 
+		//Inverting all of the motor because the motor are wired in reverse
+		driveTrain.SetInvertedMotor(RobotDrive::kFrontLeftMotor, true);
+		driveTrain.SetInvertedMotor(RobotDrive::kRearLeftMotor, true);
+		driveTrain.SetInvertedMotor(RobotDrive::kFrontRightMotor, true);
+		driveTrain.SetInvertedMotor(RobotDrive::kRearRightMotor, true);
 }
 
 void DriveTrain::InitDefaultCommand (){
-	SetDefaultCommand(new ArcadeDriveWithJoystick());
+
 }
 
 
-void DriveTrain::Drive(double left, double right){
-	driveTrain.TankDrive(left, right);
+void DriveTrain::Drive(double moveValue, double rotateValue){
+	driveTrain.Drive(moveValue, rotateValue);
 }
 
 void DriveTrain::Drive(frc::Joystick* joy){

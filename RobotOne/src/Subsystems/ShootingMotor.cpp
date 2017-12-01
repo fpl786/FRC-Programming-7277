@@ -2,7 +2,7 @@
 #include <LiveWindow/LiveWindow.h>
 
 ShootingMotor::ShootingMotor()
-		: Subsystem("ShootingMotor") {
+		: Subsystem("shootingmotor") {
 
 }
 

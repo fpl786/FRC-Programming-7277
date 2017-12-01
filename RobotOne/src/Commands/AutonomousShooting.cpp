@@ -1,28 +1,33 @@
-#include "SetShootingSpeed.h"
+#include "AutonomousShooting.h"
 #include "Robot.h"
 
-SetShootingSpeed::SetShootingSpeed(double speed):
+AutonomousShooting::AutonomousShooting(double speed, double timeout):
 frc::Command("SetShootingSpeed") {
-	this->speed = speed;
 	Requires(Robot::shootingmotor);
+	this->speed = speed;
+	this->timeout = timeout;
 }
 
 
-
 // Called just before this Command runs the first time
-void SetShootingSpeed::Initialize() {
+void AutonomousShooting::Initialize() {
 	//Changing the speed of the shooting motor by setting it to the speed of the parameter
 	Robot::shootingmotor->setSpeed(speed);
+	SetTimeout(timeout);
 }
 
 
 // Make this return true when this Command no longer needs to run execute()
-bool SetShootingSpeed::IsFinished() {
-	return true;
+bool AutonomousShooting::IsFinished() {
+	return IsTimedOut();
 }
 
 // Called once after isFinished returns true
-void SetShootingSpeed::End() {
+void AutonomousShooting::End() {
+	Robot::shootingmotor->setSpeed(0);
+}
 
+void AutonomousShooting::Interrupted(){
+	End();
 }
 

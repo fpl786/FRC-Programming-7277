@@ -2,11 +2,11 @@
 #define ShootingMotor_H
 
 #include <Commands/Subsystem.h>
-#include <Talon.h>
+#include <Jaguar.h>
 
 class ShootingMotor : public Subsystem {
 private:
-	frc::Talon shootingMotor{ 0 };
+	frc::Jaguar shootingMotor{ 0 };
 
 public:
 	ShootingMotor();

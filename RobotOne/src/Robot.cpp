@@ -2,17 +2,24 @@
 
 #include <iostream>
 
-//Setting up the share Subsystems and oi so that the commands can use it
-std::shared_ptr<DriveTrain> Robot::drivetrain = std::make_shared<DriveTrain>();
-std::shared_ptr<ShootingMotor> Robot::shootingmotor = std::make_shared<ShootingMotor>();
-std::unique_ptr<OI> Robot::oi = std::make_unique<OI>();
+DriveTrain* Robot::drivetrain = NULL;
+ShootingMotor* Robot::shootingmotor = NULL;
+OI* Robot::oi = NULL;
 
 void Robot::RobotInit() {
+	//Creating an object for the pointer to point to.
+	drivetrain = new DriveTrain();
+	shootingmotor = new ShootingMotor();
+	oi =  new OI();
+	autonomousCommand = new Autonomous(1.0);
+	joyControl = new ArcadeDriveWithJoystick();
 
 }
 
 void Robot::AutonomousInit() {
+	//autonomousCommand.Start();
 	std::cout << "Starting Auto" << std::endl;
+	autonomousCommand -> Start();
 }
 
 void Robot::AutonomousPeriodic() {
@@ -24,7 +31,10 @@ void Robot::TeleopInit() {
 	// teleop starts running. If you want the autonomous to
 	// continue until interrupted by another command, remove
 	// this line or comment it out.
+	autonomousCommand -> Cancel();
 	std::cout << "Starting Teleop" << std::endl;
+	joyControl->Start();
+
 }
 
 void Robot::TeleopPeriodic() {

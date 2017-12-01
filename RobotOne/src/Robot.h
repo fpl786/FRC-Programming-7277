@@ -8,17 +8,21 @@
 #include <IterativeRobot.h>
 #include <LiveWindow/LiveWindow.h>
 
+#include "Commands/Autonomous.h"
+#include "Commands/ArcadeDriveWithJoystick.h"
 #include "OI.h"
 #include "Subsystems/DriveTrain.h"
 #include "Subsystems/ShootingMotor.h"
 
 class Robot: public frc::IterativeRobot {
 public:
-	static std::shared_ptr<DriveTrain> drivetrain;
-	static std::shared_ptr<ShootingMotor> shootingmotor;
-	static std::unique_ptr<OI> oi;
+	static DriveTrain* drivetrain;
+	static ShootingMotor* shootingmotor;
+	static OI* oi;
 
 private:
+	Autonomous* autonomousCommand;
+	ArcadeDriveWithJoystick* joyControl;
 	frc::LiveWindow* lw = frc::LiveWindow::GetInstance();
 
 	void RobotInit() override;

@@ -26,7 +26,7 @@ public:
 	 * @param left Speed in range [-1,1]
 	 * @param right Speed in range [-1,1]
 	*/
-	void Drive(double left, double right);
+	void Drive(double moveValue, double rotateValue);
 
 	/**
 	* @param joy
