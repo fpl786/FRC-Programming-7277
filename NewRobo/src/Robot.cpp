@@ -1,15 +1,25 @@
 #include "Robot.h"
 
 #include <iostream>
+#include <cmath>
+#include <SmartDashboard/SmartDashboard.h>
 
-DriveTrain* Robot::drivetrain = NULL;
-OI* Robot::oi = NULL;
+DriveTrain* Robot::drivetrain = nullptr;
+OI* Robot::oi = nullptr;
+ELToro1* Robot::eltoro1 = nullptr;
 
 void Robot::RobotInit() {
 	//Creating an object for the pointer to point to.
 	drivetrain = new DriveTrain();
 	oi =  new OI();
-	joyControl = new ArcadeDriveWithJoystick();
+	eltoro1 =new ELToro1();
+
+	Reset = new ResetSensor();
+	frc::SmartDashboard::PutData(drivetrain);
+	frc::SmartDashboard::PutData(eltoro1);
+	Log();
+
+
 
 }
 
@@ -20,6 +30,7 @@ void Robot::AutonomousInit() {
 
 void Robot::AutonomousPeriodic() {
 	Schedule->Run();
+	Log();
 }
 
 void Robot::TeleopInit() {
@@ -30,16 +41,27 @@ void Robot::TeleopInit() {
 	* this line or comment it out.
 	* */
 	std::cout << "Starting Teleop" << std::endl;
-	joyControl->Start();
+
+
 
 }
 
 void Robot::TeleopPeriodic() {
 	Schedule->Run();
+	Log();
 }
 
 void Robot::TestPeriodic() {
 
+}
+
+void Robot::DisabledInit(){
+	Reset->Start();
+}
+
+void Robot::Log(){
+	frc::SmartDashboard::PutNumber("Distance Traveled",
+			round((double)drivetrain->GetAveRev()*47.9));
 }
 
 START_ROBOT_CLASS(Robot)

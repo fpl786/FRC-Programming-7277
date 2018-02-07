@@ -7,7 +7,7 @@ HDriveWithJoystick::HDriveWithJoystick() :
 }
 
 void HDriveWithJoystick::Execute() {
-	Robot::drivetrain->HDrive(Robot::oi->GetJoystick());
+	Robot::drivetrain->MainDrive(Robot::oi->GetController());
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -17,7 +17,7 @@ bool HDriveWithJoystick::IsFinished() {
 
 // Called once after isFinished returns true
 void HDriveWithJoystick::End() {
-	Robot::drivetrain->Drive(0, 0);
+	Robot::drivetrain->Drive(0, 0, 0);
 }
 
 void HDriveWithJoystick::Interrupted(){

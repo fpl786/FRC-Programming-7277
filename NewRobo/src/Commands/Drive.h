@@ -5,17 +5,20 @@
 #include "Commands/Command.h"
 #include "Timer.h"
 
+#include <SmartDashboard/SmartDashboard.h>
+
 class Drive : public Command {
 public:
-	Drive(double moveValue, double rotateValue, double timeout);
+	Drive(double yMoveValue, double xMoveValue, double rotateValue, double timeout);
 	void Initialize() override;
 	void Execute() override;
 	bool IsFinished() override;
 	void End( )override;
 	void Interrupted() override;
 private:
-	double moveValue;
+	double yMoveValue;
 	double rotateValue;
+	double xMoveValue;
 	double timeout;
 };
 

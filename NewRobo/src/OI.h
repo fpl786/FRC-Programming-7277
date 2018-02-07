@@ -2,18 +2,21 @@
 #define OI_H_
 
 #include <Buttons/JoystickButton.h>
+#include <XboxController.h>
 #include <Joystick.h>
 
 class OI {
 public:
 	OI();
-	frc::Joystick* GetJoystick();
+	frc::XboxController* GetController();
+
 
 private:
-	frc::Joystick joy { 0 };
+	frc::XboxController c_1 { 0 };
+	frc::Joystick xBoxControllerMap { 0 };
+	frc::JoystickButton button1 {&xBoxControllerMap, 1 };
+	frc::JoystickButton button2 {&xBoxControllerMap, 2 };
 
-	// Create some buttons
-	frc::JoystickButton button { &joy, 1 };
 };
 
 #endif  // OI_H_

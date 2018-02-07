@@ -7,7 +7,7 @@ ArcadeDriveWithJoystick::ArcadeDriveWithJoystick() :
 }
 
 void ArcadeDriveWithJoystick::Execute() {
-	Robot::drivetrain->ArcadeDrive(Robot::oi->GetJoystick());
+	Robot::drivetrain->ArcadeDrive(Robot::oi->GetController());
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -17,7 +17,7 @@ bool ArcadeDriveWithJoystick::IsFinished() {
 
 // Called once after isFinished returns true
 void ArcadeDriveWithJoystick::End() {
-	Robot::drivetrain->Drive(0, 0);
+	Robot::drivetrain->Drive(0, 0, 0);
 }
 
 void ArcadeDriveWithJoystick::Interrupted(){
