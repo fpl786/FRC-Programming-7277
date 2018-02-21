@@ -20,6 +20,7 @@ void Robot::RobotInit() {
 	frc::SmartDashboard::PutData(drivetrain);
 	frc::SmartDashboard::PutData(eltoro1);
 	frc::SmartDashboard::PutData(climber);
+	CameraServer::GetInstance()->StartAutomaticCapture();
 	Log();
 
 }
