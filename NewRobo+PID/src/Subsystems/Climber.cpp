@@ -7,9 +7,7 @@
 
 #include "Climber.h"
 #include <Spark.h>
-Climber::Climber() : Subsystem("ExampleSubsystem") {
-	winch = new frc::Spark(3);
-	pulley = new frc::Spark(2);
+Climber::Climber() : Subsystem("climber") {
 }
 
 void Climber::InitDefaultCommand() {
@@ -19,10 +17,10 @@ void Climber::InitDefaultCommand() {
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
-void Climber::togglePole(int direction){
-	pulley->Set(direction);
+void Climber::togglePole(double direction){
+	pulley.Set(direction);
 }
-void Climber::toggleWinch(int direction){
-	winch->Set(direction);
+void Climber::toggleWinch(double direction){
+	winch.Set(direction);
 }
 

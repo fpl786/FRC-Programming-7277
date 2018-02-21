@@ -18,12 +18,12 @@ Climb::Climb(int pulleyDirection, int winchDirection, int timeout):frc::Command(
 
 // Called just before this Command runs the first time
 void Climb::Initialize() {
-	if (timeout >0){
+	if (timeout > 0){
 		SetTimeout(timeout);
 
 	}
 	Robot::climber->togglePole(pulleyDirection);
-			Robot::climber->toggleWinch(winchDirection);
+	Robot::climber->toggleWinch(winchDirection);
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -36,14 +36,13 @@ bool Climb::IsFinished() {
 	if(timeout > 0){
 		return IsTimedOut();
 	}else{
-		return false;
+		return true;
 	}
 }
 
 // Called once after isFinished returns true
 void Climb::End() {
-	Robot::climber->togglePole(0);
-	Robot::climber->toggleWinch(0);
+
 }
 
 // Called when another command which requires one or more of the same

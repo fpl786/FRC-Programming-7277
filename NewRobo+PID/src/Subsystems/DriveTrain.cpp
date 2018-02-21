@@ -18,9 +18,10 @@ DriveTrain::DriveTrain()
 	tx_leftFollower->Follow(*tx_leftFront);
 
 	//This is to check if the sensor is right and invert them if needed
-	tx_rghtFront->SetSensorPhase(true);
-	tx_leftFront->SetSensorPhase(false);
+	tx_rghtFront->SetSensorPhase(false);
+	tx_leftFront->SetSensorPhase(true);
 
+	//tx_rghtFront->SetSensorDirection();
 	//Configure the output and such
 	//Minial Output
 	tx_rghtFront->ConfigNominalOutputForward(0, kTimeoutMs);
@@ -38,11 +39,26 @@ DriveTrain::DriveTrain()
 	tx_rghtFront->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Relative, kPIDLoopIdx, kTimeoutMs);
 	tx_leftFront->ConfigSelectedFeedbackSensor(FeedbackDevice::CTRE_MagEncoder_Relative, kPIDLoopIdx, kTimeoutMs);
 
+	//Change all the PIDF value accordingly. :)
 	//Setting the P value
 	tx_rghtFront->Config_kP(kPIDLoopIdx, 0.1, kTimeoutMs);
 	tx_leftFront->Config_kP(kPIDLoopIdx, 0.1, kTimeoutMs);
 
+	//Setting the I value
+	tx_rghtFront->Config_kI(kPIDLoopIdx, 0, kTimeoutMs);
+	tx_leftFront->Config_kI(kPIDLoopIdx, 0, kTimeoutMs);
 
+	//Setting the D value
+	tx_rghtFront->Config_kD(kPIDLoopIdx, 0, kTimeoutMs);
+	tx_leftFront->Config_kD(kPIDLoopIdx, 0, kTimeoutMs);
+
+	//Setting the F value
+	tx_rghtFront->Config_kF(kPIDLoopIdx, 0, kTimeoutMs);
+	tx_leftFront->Config_kF(kPIDLoopIdx, 0, kTimeoutMs);
+
+	int absolutePosition = tx_rghtFront->GetSelectedSensorPosition(0) & 0xFFF;
+	tx_rghtFront->SetSelectedSensorPosition(absolutePosition, kPIDLoopIdx,
+					kTimeoutMs);
 }
 
 void DriveTrain::InitDefaultCommand (){
@@ -55,9 +71,6 @@ void DriveTrain::Drive(double yMoveValue, double xMoveValue, double rotateValue)
 	t_middleH.Set(xMoveValue);
 }
 
-void DriveTrain::ArcadeDrive(frc::XboxController* controller){
-	driveTrain.ArcadeDrive(controller->GetX(GenericHID::JoystickHand::kLeftHand), controller->GetY(GenericHID::JoystickHand::kLeftHand));
-}
 
 void DriveTrain::MainDrive(frc::XboxController* controller){
 	double yValue = 0;
@@ -79,8 +92,8 @@ double DriveTrain::GetAveRev(){
 	double rghtRev;
 	double leftRev;
 
-	rghtRev = tx_rghtFront->GetSensorCollection().GetQuadraturePosition();
-	leftRev = tx_leftFront->GetSensorCollection().GetQuadraturePosition();
+	rghtRev = tx_rghtFront->GetSelectedSensorPosition(kPIDLoopIdx);
+	leftRev = tx_leftFront->GetSelectedSensorPosition(kPIDLoopIdx);
 	frc::SmartDashboard::PutNumber("right rev", rghtRev);
 	frc::SmartDashboard::PutNumber("left rev", leftRev);
 
@@ -89,6 +102,6 @@ double DriveTrain::GetAveRev(){
 }
 
 void DriveTrain::ResetSensor(){
-	tx_rghtFront->GetSensorCollection().SetQuadraturePosition(0, 10);
-	tx_leftFront->GetSensorCollection().SetQuadraturePosition(0, 10);
+	tx_rghtFront->GetSensorCollection().SetQuadraturePosition(0, kTimeoutMs);
+	tx_leftFront->GetSensorCollection().SetQuadraturePosition(0, kTimeoutMs);
 }

@@ -10,6 +10,7 @@
 #include <Commands/Scheduler.h>
 #include <PowerDistributionPanel.h>
 #include <SmartDashboard/SendableChooser.h>
+#include <CameraServer.h>
 
 
 #include "Commands/AutoDrive.h"
@@ -30,6 +31,8 @@ public:
 private:
 	frc::Scheduler* Schedule = Scheduler::GetInstance();
 	ResetSensor* Reset;
+	AutoDrive* AutoD;
+	std::string gameData;
 	//frc::SendableChooser<Command*>* autoChooser;
 	//Command* AutoCommand;
 	void RobotInit() override;

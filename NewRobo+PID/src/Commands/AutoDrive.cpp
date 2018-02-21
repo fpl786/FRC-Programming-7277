@@ -1,3 +1,4 @@
+#include "Robot.h"
 #include "AutoDrive.h"
 
 AutoDrive::AutoDrive(double leftMoveValue, double rightMoveValue){

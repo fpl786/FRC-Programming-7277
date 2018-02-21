@@ -1,8 +1,8 @@
 #include "Robot.h"
 
 #include <iostream>
-#include <cmath>
 #include <SmartDashboard/SmartDashboard.h>
+#include <DriverStation.h>
 
 DriveTrain* Robot::drivetrain = nullptr;
 OI* Robot::oi = nullptr;
@@ -15,19 +15,26 @@ void Robot::RobotInit() {
 	oi =  new OI();
 	eltoro1 =new ELToro1();
 	Reset = new ResetSensor();
+	AutoD = new AutoDrive(2,2);
 	climber = new Climber();
 	frc::SmartDashboard::PutData(drivetrain);
 	frc::SmartDashboard::PutData(eltoro1);
-
+	frc::SmartDashboard::PutData(climber);
 	Log();
 
 }
 
 void Robot::AutonomousInit() {
-	//AutoCommand = autoChooser->GetSelected();
-	//AutoCommand->Run();
-
-	//autonomousCommand.Start();
+	//Auto Code here
+	gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
+	if(gameData.length() > 0){
+		if(gameData[0] == 'L'){
+			//Put left auto code here
+		} else {
+			//Put right auto code here
+		}
+	}
+	//Put output here
 	std::cout << "Starting Auto" << std::endl;
 }
 

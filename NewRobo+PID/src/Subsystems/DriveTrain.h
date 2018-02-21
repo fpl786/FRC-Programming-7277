@@ -22,8 +22,8 @@ class XboxController;
 
 class DriveTrain : public frc::Subsystem {
 private:
-	WPI_TalonSRX * tx_rghtFront = new WPI_TalonSRX(4);
-	WPI_TalonSRX * tx_rghtFollower = new WPI_TalonSRX(2);
+	WPI_TalonSRX * tx_rghtFront = new WPI_TalonSRX(2);
+	WPI_TalonSRX * tx_rghtFollower = new WPI_TalonSRX(4);
 	WPI_TalonSRX * tx_leftFront = new WPI_TalonSRX(1);
 	WPI_TalonSRX * tx_leftFollower = new WPI_TalonSRX(3);
 
@@ -45,10 +45,6 @@ public:
 	*/
 	void Drive(double yMoveValue, double xMoveValue, double rotateValue);
 
-	/**
-	* @param joy
-	*/
-	void ArcadeDrive(frc::XboxController* controller);
 
 	/**
 	* @param joy
