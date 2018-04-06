@@ -7,7 +7,8 @@
 DriveTrain* Robot::drivetrain = nullptr;
 OI* Robot::oi = nullptr;
 ELToro1* Robot::eltoro1 = nullptr;
-Climber* Robot::climber = nullptr;
+Winch* Robot::winch = nullptr;
+Pulley* Robot::pulley =  nullptr;
 
 void Robot::RobotInit() {
 	//Creating an object for the pointer to point to.
@@ -15,11 +16,15 @@ void Robot::RobotInit() {
 	oi =  new OI();
 	eltoro1 =new ELToro1();
 	Reset = new ResetSensor();
-	AutoD = new AutoDrive(2,2);
-	climber = new Climber();
-	frc::SmartDashboard::PutData(drivetrain);
+	RAuto = new RAutonomous(1);
+	LAuto = new LAutonomous(1);
+
+	winch = new Winch();
+	pulley = new Pulley();
+	/**frc::SmartDashboard::PutData(drivetrain);
 	frc::SmartDashboard::PutData(eltoro1);
-	frc::SmartDashboard::PutData(climber);
+	frc::SmartDashboard::PutData(winch);
+	frc::SmartDashboard::PutData(pulley);**/
 	CameraServer::GetInstance()->StartAutomaticCapture();
 	Log();
 
@@ -30,9 +35,9 @@ void Robot::AutonomousInit() {
 	gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
 	if(gameData.length() > 0){
 		if(gameData[0] == 'L'){
-			//Put left auto code here
+			LAuto->Start();
 		} else {
-			//Put right auto code here
+			RAuto->Start();
 		}
 	}
 	//Put output here

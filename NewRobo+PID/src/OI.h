@@ -14,14 +14,14 @@ public:
 private:
 	frc::XboxController c_1 { 0 };
 	frc::Joystick xBoxControllerMap { 0 };
-	frc::JoystickButton button1 {&xBoxControllerMap, 1 };
-	frc::JoystickButton button2 {&xBoxControllerMap, 2 };
+	frc::JoystickButton buttonA {&xBoxControllerMap, 1 };
+	frc::JoystickButton buttonB {&xBoxControllerMap, 2 };
 
-	frc::JoystickButton button3 {&xBoxControllerMap, 3};
-	frc::JoystickButton button4 {&xBoxControllerMap, 4};
+	frc::JoystickButton buttonX {&xBoxControllerMap, 3};
+	frc::JoystickButton buttonY {&xBoxControllerMap, 4};
 
-	frc::JoystickButton button5 {&xBoxControllerMap, 5};
-	frc::JoystickButton button6 {&xBoxControllerMap, 6};
+	frc::JoystickButton buttonLb {&xBoxControllerMap, 5};
+	frc::JoystickButton buttonRb {&xBoxControllerMap, 6};
 	/*//configures snes controller
 	frc::Joystick SNES { 1 };
 	frc::JoystickButton sbutton1 {&SNES, 1 };

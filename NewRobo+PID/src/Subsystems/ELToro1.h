@@ -6,8 +6,8 @@
 
 class ELToro1 : public Subsystem {
 private:
-	frc::Spark Left_Toro{ 4 };
-	frc::Spark Right_Toro{ 5 };
+	frc::Spark Left_Toro{ 3 };
+	frc::Spark Right_Toro{ 4 };
 
 public:
 	ELToro1();

@@ -11,8 +11,6 @@ DriveTrain::DriveTrain()
 	driveTrain.SetExpiration(0.1);
 	driveTrain.SetMaxOutput(1.0);
 
-
-
 	//Configure the Follower Motor
 	tx_rghtFollower->Follow(*tx_rghtFront);
 	tx_leftFollower->Follow(*tx_leftFront);
@@ -80,7 +78,7 @@ void DriveTrain::MainDrive(frc::XboxController* controller){
 		yValue = -(controller -> GetTriggerAxis(GenericHID::JoystickHand::kLeftHand));
 	}
 	driveTrain.ArcadeDrive(yValue, controller->GetX(GenericHID::JoystickHand::kLeftHand));
-	t_middleH.Set(controller->GetX(GenericHID::JoystickHand::kRightHand));
+	t_middleH.Set(0.35 * (controller->GetX(GenericHID::JoystickHand::kRightHand)));
 }
 
 void DriveTrain::AutoDrive(double leftMoveValue, double rightMoveValue){
@@ -98,7 +96,6 @@ double DriveTrain::GetAveRev(){
 	frc::SmartDashboard::PutNumber("left rev", leftRev);
 
 	return ( ((double)rghtRev+(double)leftRev)/2/4096 );
-
 }
 
 void DriveTrain::ResetSensor(){

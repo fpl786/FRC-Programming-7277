@@ -11,6 +11,10 @@
 #include <PowerDistributionPanel.h>
 #include <SmartDashboard/SendableChooser.h>
 #include <CameraServer.h>
+#include <Commands/LAutonomous.h>
+#include <Commands/RAutonomous.h>
+#include <Subsystems/Winch.h>
+#include <Subsystems/Pulley.h>
 
 
 #include "Commands/AutoDrive.h"
@@ -19,19 +23,23 @@
 #include "Subsystems/DriveTrain.h"
 #include "Subsystems/ELToro1.h"
 #include "Commands/ResetSensor.h"
-#include "Subsystems/Climber.h"
+
+#include "Commands/LAutonomous.h"
+#include "Commands/RAutonomous.h"
 
 class Robot: public frc::IterativeRobot {
 public:
 	static DriveTrain* drivetrain;
 	static OI* oi;
 	static ELToro1* eltoro1;
-	static Climber* climber;
+	static Winch* winch;
+	static Pulley* pulley;
 
 private:
 	frc::Scheduler* Schedule = Scheduler::GetInstance();
 	ResetSensor* Reset;
-	AutoDrive* AutoD;
+	RAutonomous* RAuto;
+	LAutonomous* LAuto;
 	std::string gameData;
 	//frc::SendableChooser<Command*>* autoChooser;
 	//Command* AutoCommand;
