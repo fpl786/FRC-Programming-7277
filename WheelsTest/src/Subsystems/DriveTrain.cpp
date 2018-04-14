@@ -5,12 +5,12 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
-#include <Subsystems/DriveTrain.h>
+#include "DriveTrain.h"
 #include "../RobotMap.h"
 #include "Robot.h"
 #include "Commands/Drive.h"
 DriveTrain::DriveTrain()
-    : frc::Subsystem("ExampleSubsystem") {
+    : frc::Subsystem("driveTrain") {
 	stick = Robot::oi->GetController();
 }
 

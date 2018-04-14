@@ -9,8 +9,8 @@ OI* Robot::oi = nullptr;
 
 void Robot::RobotInit() {
 	//Creating an object for the pointer to point to.
-	Robot::driveTrain = new DriveTrain();
-	Robot::oi =  new OI();
+	driveTrain = new DriveTrain();
+	oi =  new OI();
 
 
 
