@@ -1,4 +1,5 @@
 #include "DriveTrain.h"
+#include <Joystick.h>
 #include <XboxController.h>
 #include <LiveWindow/LiveWindow.h>
 #include <SmartDashboard/SmartDashboard.h>
@@ -70,15 +71,20 @@ void DriveTrain::Drive(double yMoveValue, double xMoveValue, double rotateValue)
 }
 
 
-void DriveTrain::MainDrive(frc::XboxController* controller){
-	double yValue = 0;
+void DriveTrain::MainDrive(frc::Joystick* joystick, frc::XboxController* controller){
+
+	/*double yValue = 0;
 	if (controller -> GetTriggerAxis(GenericHID::JoystickHand::kLeftHand) == 0){
 		yValue = controller -> GetTriggerAxis(GenericHID::JoystickHand::kRightHand);
 	}else if(controller -> GetTriggerAxis(GenericHID::JoystickHand::kRightHand) == 0){
 		yValue = -(controller -> GetTriggerAxis(GenericHID::JoystickHand::kLeftHand));
 	}
-	driveTrain.ArcadeDrive(yValue, controller->GetX(GenericHID::JoystickHand::kLeftHand));
+	driveTrain.ArcadeDrive(yValue, controller->GetX(GenericHID::JoystickHand::kLeftHand));*/
+
+	driveTrain.ArcadeDrive(-joystick->GetY(), joystick->GetX());
 	t_middleH.Set(0.35 * (controller->GetX(GenericHID::JoystickHand::kRightHand)));
+
+
 }
 
 void DriveTrain::AutoDrive(double leftMoveValue, double rightMoveValue){

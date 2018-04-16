@@ -12,6 +12,7 @@
 #include "Constants.h"
 
 namespace frc {
+class Joystick;
 class XboxController;
 }
 
@@ -49,7 +50,7 @@ public:
 	/**
 	* @param joy
 	*/
-	void MainDrive(frc::XboxController* controller);
+	void MainDrive(frc::Joystick* joystick, frc::XboxController* controller);
 
 	/**
 	* @param joy

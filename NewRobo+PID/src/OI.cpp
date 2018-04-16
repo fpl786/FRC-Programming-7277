@@ -34,3 +34,7 @@ OI::OI() {
 XboxController* OI::GetController(){
 	return &c_1;
 }
+
+Joystick* OI::GetJoystick(){
+	return &joystick;
+}

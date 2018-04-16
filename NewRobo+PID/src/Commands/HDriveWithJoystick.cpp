@@ -7,7 +7,7 @@ HDriveWithJoystick::HDriveWithJoystick() :
 }
 
 void HDriveWithJoystick::Execute() {
-	Robot::drivetrain->MainDrive(Robot::oi->GetController());
+	Robot::drivetrain->MainDrive(Robot::oi->GetJoystick(),Robot::oi->GetController());
 }
 
 // Make this return true when this Command no longer needs to run execute()
