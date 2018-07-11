@@ -1,18 +1,25 @@
+//Add tag so that other files that include this file only include files that this file include once (No double include)
 #ifndef OI_H_
 #define OI_H_
 
+//Include files from nessercary libary
 #include <Buttons/JoystickButton.h>
 #include <XboxController.h>
 #include <Joystick.h>
 
+//Declare the class for the file
 class OI {
+//Public class that can be access by any other file encapsule within the same project
 public:
+	//Declaration of the class object
 	OI();
+	//Creating the objects
 	frc::XboxController* GetController();
 	frc::Joystick* GetJoystick();
 
-
+//Private class that only accessable by childrean fiels
 private:
+	//Mapping the variables to actual button
 	frc::XboxController c_1 { 0 };
 	frc::Joystick xBoxControllerMap { 0 };
 	frc::Joystick xBoxControllerMap2 { 1 };
@@ -25,7 +32,7 @@ private:
 
 	frc::JoystickButton buttonLb {&xBoxControllerMap, 5 };
 	frc::JoystickButton buttonRb {&xBoxControllerMap, 6 };
-	/*//configures snes controller
+	/*configures snes controller
 	frc::Joystick SNES { 1 };
 	frc::JoystickButton sbutton1 {&SNES, 1 };
 	frc::JoystickButton sbutton2 {&SNES, 2 };
