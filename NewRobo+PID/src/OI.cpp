@@ -1,10 +1,11 @@
-
+//Including necessary files in order for button mapping
 #include <Commands/SpinWinch.h>
 #include <Commands/SpinPulley.h>
+#include <Commands/Spin.h>
 #include "OI.h"
-#include "Commands/Spin.h"
 #include <WPILib.h>
 
+//Definfing the OI 
 OI::OI() {
 	//Map button for El Toro In
 	buttonX.WhenPressed(new Spin(1));
@@ -31,10 +32,10 @@ OI::OI() {
 	buttonRb.WhenReleased(new SpinWinch(0,0));
 }
 
+//Returning the objects so that the controller can be access from other variables
 XboxController* OI::GetController(){
 	return &c_1;
 }
-
 Joystick* OI::GetJoystick(){
 	return &joystick;
 }
