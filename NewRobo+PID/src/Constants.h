@@ -1,6 +1,7 @@
 #ifndef SRC_CONSTANTS_H_
 #define SRC_CONSTANTS_H_
 
+//Experiencing with setting constants before hand to that it won't be easily alter
 enum Constants {
 	/**
 	 * Which PID slot to pull gains from.  Starting 2018, you can choose
