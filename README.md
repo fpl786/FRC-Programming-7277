@@ -7,3 +7,5 @@ https://github.com/CrossTheRoadElec/Phoenix-Examples-Languages/blob/master/C%2B%
 Link for Example
 
 http://www.ctr-electronics.com/downloads/api/cpp/html/index.html Indexes for Commands
+
+http://www.cplusplus.com/doc/tutorial/preprocessor/ The purposes and function of Preprocessor directives (The codes that start with #)
