@@ -1,4 +1,4 @@
-//Add tag so that other files that include this file only include files that this file include once (No double include)
+
 #ifndef OI_H_
 #define OI_H_
 
@@ -17,7 +17,7 @@ public:
 	frc::XboxController* GetController();
 	frc::Joystick* GetJoystick();
 
-//Private class that only accessable by childrean fiels
+//Private class that only accessable by the class itself 
 private:
 	//Mapping the variables to actual button
 	frc::XboxController c_1 { 0 };
@@ -42,4 +42,5 @@ private:
 
 };
 
+//Ending 
 #endif  // OI_H_
